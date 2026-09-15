@@ -10,10 +10,10 @@ avg_wait_sjf = df_sjf['wait_time'].mean()
 print(f"Average Wait Time for SJF Policy: {avg_wait_sjf:.2f}")
 
 if avg_wait_fcfs > avg_wait_sjf:
-    better_policy = "FCFS"
+    better_policy = "SJF"
     difference = avg_wait_fcfs - avg_wait_sjf
 else:
-    better_policy = "SJF"
+    better_policy = "FCFS"
     difference = avg_wait_sjf - avg_wait_fcfs
 
 print(f"Based on average waiting time, {better_policy} performed better by {difference:.2f}.")
