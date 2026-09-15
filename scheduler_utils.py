@@ -29,6 +29,8 @@ def simulate_fcfs(jobs, total_cores):
         job.pop('end_time', None)
         job.pop('ncpus', None)
 
+    schedule = sorted(schedule, key=lambda job: job['job_id'])  # lower submit_time means earlier submission
+
     return schedule
 
 
@@ -59,6 +61,8 @@ def simulate_sjf(jobs, total_cores):
     for job in schedule:
         job.pop('end_time', None)
         job.pop('ncpus', None)
+
+    schedule = sorted(schedule, key=lambda job: job['job_id'])  # lower submit_time means earlier submission
 
     return schedule
 
