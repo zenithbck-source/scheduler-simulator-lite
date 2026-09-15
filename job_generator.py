@@ -1,27 +1,18 @@
 import random
-import pandas as pd
 
 def generate_jobs(index, seed=42):
     random.seed(a=seed, version=2)
-    
-    job_id = []
-    submit_time = []
-    runtime = []
-    ncpus = []
+    jobs = []
 
-    for i in range(1, index):
-        job_id.append(f"J{i:03d}")
-        submit_time.append(random.randint(0, 50))
-        runtime.append(random.randint(1, 20))
-        ncpus.append(random.choice([1,2,4,8]))
-
-    jobs = {'job_id': job_id, 'submit_time': submit_time, 'runtime': runtime, 'ncpus': ncpus}
+    for i in range(0, index):
+        job_id = (f"J{i+1:03d}")
+        submit_time = random.randint(0, 50)
+        runtime = random.randint(1, 20)
+        ncpus = random.choice([1,2,4])
+        jobs.append({'job_id': job_id, 'submit_time': submit_time, 'runtime': runtime, 'ncpus': ncpus})
 
     return jobs
 
-
-
 if __name__ == "__main__":
-    jobs = generate_jobs(21)   # if 5 jobs, input plus 1
-    df = pd.DataFrame(jobs)
-    print(df)
+    jobs = generate_jobs(15)
+    print(jobs)
